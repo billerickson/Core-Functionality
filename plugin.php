@@ -27,3 +27,6 @@ define( 'BE_DIR', dirname( __FILE__ ) );
  
 // Shortcodes
 include_once( BE_DIR . '/lib/functions/shortcodes.php' );
+
+// General
+include_once( BE_DIR . '/lib/functions/general.php' );
