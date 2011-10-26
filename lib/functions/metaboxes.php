@@ -49,7 +49,7 @@ function be_rotator_metabox( $meta_boxes ) {
 	
 	return $meta_boxes;
  }
-add_filter( 'cmb_meta_boxes' , 'be_create_metaboxes' );
+add_filter( 'cmb_meta_boxes' , 'be_rotator_metabox' );
  
  
 /**
