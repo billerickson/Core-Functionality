@@ -26,16 +26,19 @@
 define( 'BE_DIR', dirname( __FILE__ ) );
  
 // Post Types
-include_once( BE_DIR . '/lib/functions/post-types.php' );
+//include_once( BE_DIR . '/lib/functions/post-types.php' );
 
 // Taxonomies 
-include_once( BE_DIR . '/lib/functions/taxonomies.php' );
+//include_once( BE_DIR . '/lib/functions/taxonomies.php' );
 
 // Metaboxes
-include_once( BE_DIR . '/lib/functions/metaboxes.php' );
+//include_once( BE_DIR . '/lib/functions/metaboxes.php' );
  
 // Shortcodes
-include_once( BE_DIR . '/lib/functions/shortcodes.php' );
+//include_once( BE_DIR . '/lib/functions/shortcodes.php' );
+
+// Widgets
+//include_once( BE_DIR . '/lib/widgets/widget-social.php' );
 
 // General
 
