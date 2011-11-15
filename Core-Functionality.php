@@ -3,7 +3,7 @@
  * Plugin Name: Core Functionality
  * Plugin URI: http://www.billerickson.net
  * Description: This contains all your site's core functionality so that it is theme independent.
- * Version: 1.0
+ * Version: 1.0 (mu)
  * Author: Bill Erickson
  * Author URI: http://www.billerickson.net
  *
@@ -15,30 +15,52 @@
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @package BE_Genesis_Child
- * @version 1.0
+ * @version 1.0-MU
  * @author Bill Erickson <bill@billerickson.net>
  * @copyright Copyright (c) 2011, Bill Erickson
  * @link http://www.billerickson.net/shortcode-to-display-posts/
  * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * 
+ * @category   MU-PLUGINS
+ * @author Greg Kerstin <hello@graphicagenda.com>
+ * 
  */
 
 // Plugin Directory 
-define( 'BE_DIR', dirname( __FILE__ ) );
+define( 'BE_MU_DIR', dirname( __FILE__ ));
+define( 'BE_DIR', BE_MU_DIR.'/Core-Functionality' );
+
+// PLUGIN ROOT
+define( 'BE_IMAGES_DIR', BE_DIR.'/images');
+define( 'BE_LIB_DIR', BE_DIR.'/lib');
+
+// LIB CONTENT
+define( 'BE_ADMIN_DIR', BE_LIB_DIR.'/admin');
+define( 'BE_COLUMNS_DIR', BE_LIB_DIR.'/columns');
+define( 'BE_FUNCTIONS_DIR', BE_LIB_DIR.'/functions');
+define( 'BE_METABOX_DIR', BE_LIB_DIR.'/metabox');
+define( 'BE_SHORTCODES_DIR', BE_LIB_DIR.'/shortcodes');
+define( 'BE_TAXONOMY_DIR', BE_LIB_DIR.'/taxonomy');
+define( 'BE_WIDGETS_DIR', BE_LIB_DIR.'/widgets');
+
+// ADMIN 
+// if (is_login_page())
+//	include_once( BE_ADMIN_DIR . '/login.php' );
  
 // Post Types
-//include_once( BE_DIR . '/lib/functions/post-types.php' );
-
-// Taxonomies 
-//include_once( BE_DIR . '/lib/functions/taxonomies.php' );
+//include_once( BE_FUNCTIONS_DIR . '/post-types.php' );
 
 // Metaboxes
-//include_once( BE_DIR . '/lib/functions/metaboxes.php' );
+//include_once( BE_METABOX_DIR . '/metaboxes.php' );
  
 // Shortcodes
-include_once( BE_DIR . '/lib/functions/shortcodes.php' );
+include_once( BE_SHORTCODES_DIR . '/shortcodes.php' );
+
+// Taxonomies 
+//include_once( BE_TAXONOMY_DIR . '/taxonomies.php' );
 
 // Widgets
-//include_once( BE_DIR . '/lib/widgets/widget-social.php' );
+//include_once( BE_WIDGETS_DIR . '/widget-social.php' );
 
 // General
 
@@ -108,3 +130,28 @@ function be_custom_menu_order( $menu_ord ) {
 }
 add_filter( 'custom_menu_order', 'be_custom_menu_order' );
 add_filter( 'menu_order', 'be_custom_menu_order' );
+
+
+ /**
+ * Is Login Page
+ *
+ * @return 	$is_login - boolean
+ * @author 	Franz Josef Kaiser
+ * @link	http://unserkaiser.com
+  * 
+ */
+
+ function is_login_page() {
+	$url_parts 	= parse_url( $_SERVER['REQUEST_URI'] );
+	$path_parts = pathinfo( $url_parts['path'] );
+	$dir_parts 	= explode( '/', $path_parts['dirname'] );
+	$dirname 	= end( $dir_parts );
+	$filename 	= $path_parts['basename'];
+	if ( 'wp-login.php' == $filename ) {
+		$is_login = true; 
+	} 
+	else {
+		$is_login = false;
+	}
+	return $is_login;
+ }
