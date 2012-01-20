@@ -74,5 +74,5 @@ function be_custom_menu_order( $menu_ord ) {
 		'upload.php', // the media manager
     );
 }
-add_filter( 'custom_menu_order', 'be_custom_menu_order' );
-add_filter( 'menu_order', 'be_custom_menu_order' );
+//add_filter( 'custom_menu_order', 'be_custom_menu_order' );
+//add_filter( 'menu_order', 'be_custom_menu_order' );
