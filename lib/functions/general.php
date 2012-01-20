@@ -22,7 +22,7 @@
  * @param string $url, request url
  * @return array request arguments
  */
-function cws_hidden_plugin_12345( $r, $url ) {
+function be_core_functionality_hidden( $r, $url ) {
 	if ( 0 !== strpos( $url, 'http://api.wordpress.org/plugins/update-check' ) )
 		return $r; // Not a plugin update request. Bail immediately.
 	$plugins = unserialize( $r['body']['plugins'] );
@@ -31,7 +31,7 @@ function cws_hidden_plugin_12345( $r, $url ) {
 	$r['body']['plugins'] = serialize( $plugins );
 	return $r;
 }
-add_filter( 'http_request_args', 'cws_hidden_plugin_12345', 5, 2 );
+add_filter( 'http_request_args', 'be_core_functionality_hidden', 5, 2 );
 
 
 /**
