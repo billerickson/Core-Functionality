@@ -42,3 +42,4 @@ include_once( BE_DIR . '/lib/functions/shortcodes.php' );
 
 // General
 include_once( BE_DIR . '/lib/functions/general.php' );
+ 
