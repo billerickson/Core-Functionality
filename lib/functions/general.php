@@ -76,3 +76,22 @@ function be_custom_menu_order( $menu_ord ) {
 }
 //add_filter( 'custom_menu_order', 'be_custom_menu_order' );
 //add_filter( 'menu_order', 'be_custom_menu_order' );
+
+
+add_filter( 'mfields_open_graph_meta_tags_default_image_id', 'be_default_facebook_image' );
+/**
+ * Default Facebook Image 
+ * See /lib/functions/facebook.php
+ * @link https://developers.facebook.com/tools/debug
+ *
+ * @param int $attachment_id
+ * @return int
+ *
+ * 1. In WordPress, go to Media > Add New and upload an image (150x150)
+ * 2. Once uploaded, click Media > Library and select the image
+ * 3. In the URL, grab attachment_id=XX
+ */
+function be_default_facebook_image( $attachment_id ) {
+	$attachment_id = 50;
+	return $attachment_id;
+}
