@@ -10,6 +10,7 @@
  * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
+add_filter( 'cmb_meta_boxes' , 'be_rotator_metabox' );
 /**
  * Create Rotator Metabox
  *
@@ -49,9 +50,9 @@ function be_rotator_metabox( $meta_boxes ) {
 	
 	return $meta_boxes;
  }
-add_filter( 'cmb_meta_boxes' , 'be_rotator_metabox' );
  
  
+add_action( 'init', 'be_initialize_cmb_meta_boxes', 9999 );
 /**
  * Initialize Metabox Class
  * see /lib/metabox/example-functions.php for more information
@@ -63,4 +64,3 @@ function be_initialize_cmb_meta_boxes() {
         require_once( BE_DIR . '/lib/metabox/init.php' );
     }
 }
-add_action( 'init', 'be_initialize_cmb_meta_boxes', 9999 );
