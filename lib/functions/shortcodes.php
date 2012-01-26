@@ -12,46 +12,39 @@
  */
  
  
-/**
- * Use shortcodes in widgets
- */
+// Use shortcodes in widgets
 add_filter('widget_text', 'do_shortcode');
 
+
+add_shortcode('url','be_url_shortcode');
 /**
  * URL Shortcode
  *
  * @param	null
  * @return	string	Site URL
  */
-
-add_shortcode('url','be_url_shortcode');
-
 function be_url_shortcode($atts) {
 	return get_bloginfo('url');
 }
 
+add_shortcode('wpurl','be_wpurl_shortcode');
 /**
  * WP URL Shortcode
  *
  * @param	null
  * @return	string	WordPress URL
  */
-
-add_shortcode('wpurl','be_wpurl_shortcode');
-
 function be_wpurl_shortcode($atts) {
 	return get_bloginfo('wpurl');
 }
 
+add_shortcode('child', 'be_child_shortcode');
 /**
  * Child Shortcode
  *
  * @param	null
  * @return	string	Child Theme URL
  */
-
-add_shortcode('child', 'be_child_shortcode');
-
 function be_child_shortcode($atts) {
 	return get_bloginfo('stylesheet_directory');
 }
