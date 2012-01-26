@@ -10,6 +10,7 @@
  * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
+add_action( 'init', 'be_register_rotator_post_type' );	
 /**
  * Create Rotator post type
  *
@@ -50,4 +51,3 @@ function be_register_rotator_post_type() {
 
 	register_post_type( 'rotator', $args );
 }
-add_action( 'init', 'be_register_rotator_post_type' );	
