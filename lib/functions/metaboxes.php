@@ -10,40 +10,28 @@
  * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
-add_filter( 'cmb_meta_boxes' , 'be_rotator_metabox' );
+add_filter( 'cmb_meta_boxes' , 'be_metaboxes' );
 /**
- * Create Rotator Metabox
+ * Create Metaboxes
  *
  * @link http://www.billerickson.net/wordpress-metaboxes/
  *
  */
 
-function be_rotator_metabox( $meta_boxes ) {
+function be_metaboxes( $meta_boxes ) {
 	$meta_boxes[] = array(
-    	'id' => 'rotator-options',
-	    'title' => 'Rotator Options',
-	    'pages' => array('rotator'), 
+    	'id' => 'page-options',
+	    'title' => 'Page Options',
+	    'pages' => array('page'), 
 		'context' => 'normal',
-		'priority' => 'low',
+		'priority' => 'high',
 		'show_names' => true, 
 		'fields' => array(
 			array(
-				'name' => 'Instructions',
-				'desc' => 'In the right column upload a featured image. Make sure this image is at least 900x360px wide. Then fill out the information below.',
-				'type' => 'title',
-				'id' => 'be_rotator_instructions'
-			),
-			array(
-		        'name' => 'Display Info',
-		        'desc' => 'Show Title and Excerpt from above',
-	    	    'id' => 'be_rotator_show_info',
-	        	'type' => 'checkbox'
-			),
-			array(
-				'name' => 'Clickthrough URL', 
-	            'desc' => 'Where the Learn More button goes',
-            	'id' => 'be_rotator_url',
-            	'type' => 'text'
+		        'name' => 'Subtitle',
+		        'desc' => '',
+	    	    'id' => 'be_page_subtitle',
+	        	'type' => 'text'
 			),
 		),
 	);
