@@ -55,6 +55,16 @@ function be_remove_menus () {
 	}
 }
 
+add_action( 'wp_before_admin_bar_render', 'be_admin_bar_items' );
+/**
+ * Customize Admin Bar Items
+ * @link http://wp-snippets.com/addremove-wp-admin-bar-links/
+ */
+function be_admin_bar_items() {
+	global $wp_admin_bar;
+	$wp_admin_bar->remove_menu( 'new-link', 'new-content' );
+}
+
 
 //add_filter( 'custom_menu_order', 'be_custom_menu_order' );
 //add_filter( 'menu_order', 'be_custom_menu_order' );
