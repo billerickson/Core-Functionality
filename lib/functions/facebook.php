@@ -71,7 +71,8 @@ class Mfields_Open_Graph_Meta_Tags {
 			'site_name'   => get_bloginfo(),
 			'title'       => '',
 			'type'        => 'article',
-			'url'         => ''
+			'url'         => '',
+			'locale'      => get_locale(),
 			) );
 
 		$output['description'] = wp_strip_all_tags( $output['description'] );
