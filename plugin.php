@@ -14,12 +14,6 @@
  * This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without 
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @package BE_Genesis_Child
- * @version 1.0
- * @author Bill Erickson <bill@billerickson.net>
- * @copyright Copyright (c) 2011, Bill Erickson
- * @link http://www.billerickson.net/shortcode-to-display-posts/
- * @license http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
 // Plugin Directory 

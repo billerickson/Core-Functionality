@@ -2,10 +2,8 @@
 /**
  * Social Widget
  *
- * Displays links to Facebook, Twitter and Youtube
- * @link http://codex.wordpress.org/Widgets_API#Developing_Widgets
- *
- * @package      BE_Genesis_Child
+ * @package      Core_Functionality
+ * @since        1.0
  * @author       Bill Erickson <bill@billerickson.net>
  * @copyright    Copyright (c) 2011, Bill Erickson
  * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License

@@ -4,7 +4,8 @@
  *
  * This file registers any custom post types
  *
- * @package      BE_Genesis_Child
+ * @package      Core_Functionality
+ * @since        1.0
  * @author       Bill Erickson <bill@billerickson.net>
  * @copyright    Copyright (c) 2011, Bill Erickson
  * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
@@ -13,9 +14,8 @@
 add_action( 'init', 'be_register_rotator_post_type' );	
 /**
  * Create Rotator post type
- *
+ * @since 1.0
  * @link http://codex.wordpress.org/Function_Reference/register_post_type
- *
  */
 
 function be_register_rotator_post_type() {

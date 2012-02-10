@@ -1,27 +1,14 @@
 <?php
-/*
-Plugin Name:       Mfields Open Graph Meta Tags
-Description:       Displays meta information for the open graph protocol on various parts of a WordPress installation.
-Version:           0.1
-Author:            Michael Fields
-Author URI:        http://wordpress.mfields.org/
-License:           GPLv2 or later
-
-Copyright 2011     Michael Fields  michael@mfields.org
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License version 2 or later
-as published by the Free Software Foundation.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-*/
+/**
+ * Facebook Open Graph Tags
+ * @link https://github.com/mfields/mfields-opengraph-meta-tags
+ *
+ * @package      Core_Functionality
+ * @since        1.0
+ * @author       Bill Erickson <bill@billerickson.net>
+ * @copyright    Copyright (c) 2011, Bill Erickson
+ * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ */
 
 Mfields_Open_Graph_Meta_Tags::init();
 
