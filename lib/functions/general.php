@@ -5,7 +5,7 @@
  * This file contains any general functions
  *
  * @package      Core_Functionality
- * @since        1.0
+ * @since        1.0.0
  * @link         https://github.com/billerickson/Core-Functionality
  * @author       Bill Erickson <bill@billerickson.net>
  * @copyright    Copyright (c) 2011, Bill Erickson
@@ -15,7 +15,7 @@
 add_filter( 'http_request_args', 'be_core_functionality_hidden', 5, 2 );
 /**
  * Don't Update Plugin
- * @since 1.0
+ * @since 1.0.0
  * 
  * This prevents you being prompted to update if there's a public plugin
  * with the same name.
@@ -41,7 +41,7 @@ function be_core_functionality_hidden( $r, $url ) {
 add_action( 'admin_menu', 'be_remove_menus' );
 /**
  * Remove Menu Items
- * @since 1.0
+ * @since 1.0.0
  *
  * Remove unused menu items by adding them to the array.
  * See the commented list of menu items for reference.
@@ -63,7 +63,7 @@ function be_remove_menus () {
 add_action( 'wp_before_admin_bar_render', 'be_admin_bar_items' );
 /**
  * Customize Admin Bar Items
- * @since 1.0
+ * @since 1.0.0
  * @link http://wp-snippets.com/addremove-wp-admin-bar-links/
  */
 function be_admin_bar_items() {
@@ -76,7 +76,7 @@ function be_admin_bar_items() {
 //add_filter( 'menu_order', 'be_custom_menu_order' );
 /**
  * Customize Menu Order
- * @since 1.0
+ * @since 1.0.0
  *
  * @param array $menu_ord. Current order.
  * @return array $menu_ord. New order.
@@ -98,7 +98,7 @@ function be_custom_menu_order( $menu_ord ) {
 //add_filter( 'mfields_open_graph_meta_tags_default_image_id', 'be_default_facebook_image' );
 /**
  * Default Facebook Image 
- * @since 1.0
+ * @since 1.0.0
  *
  * See /lib/functions/facebook.php
  * @link https://developers.facebook.com/tools/debug

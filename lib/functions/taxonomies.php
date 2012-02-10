@@ -5,7 +5,7 @@
  * This file registers any custom taxonomies
  *
  * @package      Core_Functionality
- * @since        1.0
+ * @since        1.0.0
  * @link         https://github.com/billerickson/Core-Functionality
  * @author       Bill Erickson <bill@billerickson.net>
  * @copyright    Copyright (c) 2011, Bill Erickson
@@ -16,7 +16,7 @@
 add_action( 'init', 'be_register_location_taxonomy' );
 /**
  * Create Location Taxonomy
- * @since 1.0
+ * @since 1.0.0
  * @link http://codex.wordpress.org/Function_Reference/register_taxonomy
  */
 
