@@ -202,23 +202,20 @@ class Mfields_Open_Graph_Meta_Tags {
 		}
 
 		/*
-		 * Use the featured image only if this post_type supports it
-		 * and the user has assigned one for the queried post. Other
+		 * Use the featured image only if one is specified. Other
 		 * extension may provide a default image ID for use in cases
 		 * where no feature image has been associated with a post.
 		 * The filter you want to use is:
 		 * "mfields_open_graph_meta_tags_default_image_id"
 		 */
-		if ( post_type_supports( $post_type, 'thumbnail' ) ) {
-			$post_thumbnail_id = absint( apply_filters( 'mfields_open_graph_meta_tags_default_image_id', 0 ) );
-			if ( has_post_thumbnail() ) {
-				$post_thumbnail_id = get_post_thumbnail_id();
-			}
-			if ( ! empty( $post_thumbnail_id ) ) {
-				$post_thumbnail = wp_get_attachment_image_src( $post_thumbnail_id, 'thumbnail' );
-				if ( isset( $post_thumbnail[0] ) ) {
-					$output['image'] = $post_thumbnail[0];
-				}
+		$post_thumbnail_id = absint( apply_filters( 'mfields_open_graph_meta_tags_default_image_id', 0 ) );
+		if ( has_post_thumbnail() ) {
+			$post_thumbnail_id = get_post_thumbnail_id();
+		}
+		if ( ! empty( $post_thumbnail_id ) ) {
+			$post_thumbnail = wp_get_attachment_image_src( $post_thumbnail_id, 'thumbnail' );
+			if ( isset( $post_thumbnail[0] ) ) {
+				$output['image'] = $post_thumbnail[0];
 			}
 		}
 
