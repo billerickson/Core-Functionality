@@ -14,18 +14,23 @@
 Mfields_Open_Graph_Meta_Tags::init();
 
 class Mfields_Open_Graph_Meta_Tags {
-	function init() {
+	public static function init() {
 		add_action( 'wp_head', array( __class__, 'print_meta' ) );
 	}
-	public function print_meta() {
+	public static function print_meta() {
 		$data = self::get_meta();
 		foreach( $data as $key => $value ) {
 			if ( empty( $value ) ) {
 				continue;
 			}
 
-			/* Append open grapgh prefix to all keys. */
-			$property = 'og:' . $key;
+			/* Append facebook prefix to specific keys */
+			if( in_array( $key, array( 'admins', 'app_id' ) ) )
+				$property = 'fb: ' . $key;
+				
+			/* Append open graph prefix to all other keys. */
+			else
+				$property = 'og:' . $key;
 
 			/* Determine the appropriate escaping function to use. */
 			$esc = 'esc_attr';
@@ -37,7 +42,7 @@ class Mfields_Open_Graph_Meta_Tags {
 			print '<meta property="' . esc_attr( $property ) . '" content="' . call_user_func( $esc, $value ) . '">' . "\n";
 		}
 	}
-	public function get_meta() {
+	public static function get_meta() {
 		$output = array();
 		if ( is_home() ) {
 			$output = self::get_meta_home();
@@ -54,6 +59,7 @@ class Mfields_Open_Graph_Meta_Tags {
 
 		$output = wp_parse_args( $output, array(
 			'admins'      => '',
+			'app_id'      => '',
 			'description' => '',
 			'image'       => '',
 			'site_name'   => get_bloginfo(),
@@ -69,7 +75,7 @@ class Mfields_Open_Graph_Meta_Tags {
 
 		return $output;
 	}
-	private function get_meta_home() {
+	private static function get_meta_home() {
 		$output = array(
 			'description' => get_bloginfo( 'description' ),
 			'title'       => get_bloginfo(),
@@ -78,7 +84,7 @@ class Mfields_Open_Graph_Meta_Tags {
 			);
 		return apply_filters( 'mfields_open_graph_meta_tags_home', $output );
 	}
-	private function get_meta_author() {
+	private static function get_meta_author() {
 		global $wp_query;
 
 		$output = array(
@@ -115,7 +121,7 @@ class Mfields_Open_Graph_Meta_Tags {
 
 		return $output;
 	}
-	private function get_meta_term() {
+	private static function get_meta_term() {
 		global $wp_query;
 
 		$output = array();
@@ -152,7 +158,7 @@ class Mfields_Open_Graph_Meta_Tags {
 
 		return $output;
 	}
-	private function get_meta_singular() {
+	private static function get_meta_singular() {
 		global $post;
 		setup_postdata( $post );
 
@@ -191,7 +197,8 @@ class Mfields_Open_Graph_Meta_Tags {
 		}
 
 		/*
-		 * Use the featured image only if one is specified. Other
+		 * Use the featured image only if this post_type supports it
+		 * and the user has assigned one for the queried post. Other
 		 * extension may provide a default image ID for use in cases
 		 * where no feature image has been associated with a post.
 		 * The filter you want to use is:
