@@ -38,9 +38,9 @@ function be_admin_alert_errors( $errno, $errstr, $errfile, $errline ) {
 	ob_start();
 ?>
 <div class="error">
-  <p>
-  	<strong><?php echo $errname; ?> (<?php echo $errno; ?>): </strong><?php echo $errstr; ?><strong> <?php echo $errfile; ?></strong> on line <strong><?php echo $errline; ?></strong>
-  </p>
+	<p>
+		<strong><?php echo $errname; ?> (<?php echo $errno; ?>): </strong><?php echo $errstr; ?><strong> <?php echo $errfile; ?></strong> on line <strong><?php echo $errline; ?></strong>
+	</p>
 </div>
 <?php
 	echo ob_get_clean();
