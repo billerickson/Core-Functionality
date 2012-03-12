@@ -10,38 +10,39 @@
  * @copyright    Copyright (c) 2011, Bill Erickson
  * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
-function be_admin_alert_errors($errno, $errstr, $errfile, $errline){
 
-	$errorType = array (
-		 E_ERROR 				=> 'ERROR',
-		 E_CORE_ERROR     		=> 'CORE ERROR',
-		 E_COMPILE_ERROR  		=> 'COMPILE ERROR',
-		 E_USER_ERROR     		=> 'USER ERROR',
-		 E_RECOVERABLE_ERROR    => 'RECOVERABLE ERROR',
-		 E_WARNING        		=> 'WARNING',
-		 E_CORE_WARNING   		=> 'CORE WARNING',
-		 E_COMPILE_WARNING 		=> 'COMPILE WARNING',
-		 E_USER_WARNING   		=> 'USER WARNING',
-		 E_NOTICE         		=> 'NOTICE',
-		 E_USER_NOTICE    		=> 'USER NOTICE',
-		 E_DEPRECATED			=> 'DEPRECATED',
-		 E_USER_DEPRECATED		=> 'USER_DEPRECATED',
-		 E_PARSE          		=> 'PARSING ERROR'
+function be_admin_alert_errors( $errno, $errstr, $errfile, $errline ) {
+	$errortype = array(
+		E_ERROR => 'Error',
+		E_WARNING => 'Warning',
+		E_PARSE => 'Parsing Error',
+		E_NOTICE => 'Notice',
+		E_CORE_ERROR => 'Core Error',
+		E_CORE_WARNING => 'Core Warning',
+		E_COMPILE_ERROR => 'Compile Error',
+		E_COMPILE_WARNING => 'Compile Warning',
+		E_USER_ERROR => 'User Error',
+		E_USER_WARNING => 'User Warning',
+		E_USER_NOTICE => 'User Notice',
+		E_STRICT => 'Strict',
+		E_RECOVERABLE_ERROR => 'Catchable Fatal Error',
+		E_DEPRECATED => 'Deprecated',
+		E_USER_DEPRECATED => 'User Deprecated',
 	);
 
-	if (array_key_exists($errno, $errorType)) {
-		$errname = $errorType[$errno];
+	if ( array_key_exists( $errno, $errortype ) ) {
+		$errname = $errortype[$errno];
 	} else {
-		$errname = 'UNKNOWN ERROR';
+		$errname = 'Unknown Error';
 	}
-ob_start();?>
+	ob_start();
+?>
 <div class="error">
-  <p>
-  	<strong><?php echo $errname; ?> Error: [<?php echo $errno; ?>] </strong><?php echo $errstr; ?><strong> <?php echo $errfile; ?></strong> on line <strong><?php echo $errline; ?></strong>
-  <p/>
+	<p>
+		<strong><?php echo $errname; ?> (<?php echo $errno; ?>): </strong><?php echo $errstr; ?><strong> <?php echo $errfile; ?></strong> on line <strong><?php echo $errline; ?></strong>
+	</p>
 </div>
 <?php
-echo ob_get_clean();
+	echo ob_get_clean();
 }
-
-set_error_handler("be_admin_alert_errors", E_ERROR ^ E_CORE_ERROR ^ E_COMPILE_ERROR ^ E_USER_ERROR ^ E_RECOVERABLE_ERROR ^  E_WARNING ^  E_CORE_WARNING ^ E_COMPILE_WARNING ^ E_USER_WARNING ^ E_NOTICE ^  E_USER_NOTICE ^ E_DEPRECATED	^  E_USER_DEPRECATED	^  E_PARSE );
+set_error_handler( 'be_admin_alert_errors', E_ERROR ^ E_WARNING ^ E_PARSE ^ E_NOTICE ^ E_CORE_ERROR ^ E_CORE_WARNING ^ E_COMPILE_ERROR ^ E_COMPILE_WARNING ^ E_USER_ERROR ^ E_USER_WARNING ^ E_USER_NOTICE ^ E_STRICT ^ E_RECOVERABLE_ERROR ^ E_DEPRECATED ^ E_USER_DEPRECATED );
