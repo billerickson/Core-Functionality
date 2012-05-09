@@ -35,9 +35,6 @@ include_once( BE_DIR . '/lib/functions/shortcodes.php' );
 // -- Set default image in general.php
 include_once( BE_DIR . '/lib/functions/facebook.php' );
 
-// Admin Debugging
-//include_once( BE_DIR . '/lib/functions/debug.php' );
-
 // Widgets
 //include_once( BE_DIR . '/lib/widgets/widget-social.php' );
 
