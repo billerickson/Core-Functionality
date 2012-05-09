@@ -76,4 +76,7 @@ class BE_Social_Widget extends WP_Widget {
 	}
 }
 
-add_action( 'widgets_init', create_function( '', "register_widget('BE_Social_Widget');" ) );
+function be_register_social_widget() {
+	register_widget('BE_Social_Widget');
+}
+add_action( 'widgets_init', 'be_register_social_widget' );
