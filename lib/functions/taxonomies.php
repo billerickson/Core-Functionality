@@ -13,7 +13,6 @@
  */
 
 
-add_action( 'init', 'be_register_location_taxonomy' );
 /**
  * Create Location Taxonomy
  * @since 1.0.0
@@ -45,3 +44,4 @@ function be_register_location_taxonomy() {
 		)
 	);
 }
+add_action( 'init', 'be_register_location_taxonomy' );

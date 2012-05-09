@@ -12,7 +12,6 @@
  * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
  
-add_filter( 'http_request_args', 'be_core_functionality_hidden', 5, 2 );
 /**
  * Don't Update Plugin
  * @since 1.0.0
@@ -36,9 +35,9 @@ function be_core_functionality_hidden( $r, $url ) {
 	$r['body']['plugins'] = serialize( $plugins );
 	return $r;
 }
+add_filter( 'http_request_args', 'be_core_functionality_hidden', 5, 2 );
 
 
-add_action( 'admin_menu', 'be_remove_menus' );
 /**
  * Remove Menu Items
  * @since 1.0.0
@@ -47,7 +46,6 @@ add_action( 'admin_menu', 'be_remove_menus' );
  * See the commented list of menu items for reference.
  *
  */
-
 function be_remove_menus () {
 	global $menu;
 	$restricted = array(__('Links'));
@@ -59,8 +57,8 @@ function be_remove_menus () {
 		if(in_array($value[0] != NULL?$value[0]:"" , $restricted)){unset($menu[key($menu)]);}
 	}
 }
+add_action( 'admin_menu', 'be_remove_menus' );
 
-add_action( 'wp_before_admin_bar_render', 'be_admin_bar_items' );
 /**
  * Customize Admin Bar Items
  * @since 1.0.0
@@ -70,10 +68,9 @@ function be_admin_bar_items() {
 	global $wp_admin_bar;
 	$wp_admin_bar->remove_menu( 'new-link', 'new-content' );
 }
+add_action( 'wp_before_admin_bar_render', 'be_admin_bar_items' );
 
 
-//add_filter( 'custom_menu_order', 'be_custom_menu_order' );
-//add_filter( 'menu_order', 'be_custom_menu_order' );
 /**
  * Customize Menu Order
  * @since 1.0.0
@@ -82,7 +79,6 @@ function be_admin_bar_items() {
  * @return array $menu_ord. New order.
  *
  */
-
 function be_custom_menu_order( $menu_ord ) {
 	if ( !$menu_ord ) return true;
 	return array(
@@ -93,9 +89,10 @@ function be_custom_menu_order( $menu_ord ) {
 		'upload.php', // the media manager
     );
 }
+//add_filter( 'custom_menu_order', 'be_custom_menu_order' );
+//add_filter( 'menu_order', 'be_custom_menu_order' );
 
 
-//add_filter( 'mfields_open_graph_meta_tags_default_image_id', 'be_default_facebook_image' );
 /**
  * Default Facebook Image 
  * @since 1.0.0
@@ -114,3 +111,4 @@ function be_default_facebook_image( $attachment_id ) {
 	$attachment_id = 50;
 	return $attachment_id;
 }
+//add_filter( 'mfields_open_graph_meta_tags_default_image_id', 'be_default_facebook_image' );

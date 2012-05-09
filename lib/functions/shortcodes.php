@@ -18,7 +18,6 @@
 add_filter( 'widget_text', 'do_shortcode' );
 
 
-add_shortcode( 'url','be_url_shortcode' );
 /**
  * URL Shortcode
  * @since 1.0.0
@@ -29,8 +28,8 @@ add_shortcode( 'url','be_url_shortcode' );
 function be_url_shortcode( $atts ) {
 	return get_bloginfo( 'url' );
 }
+add_shortcode( 'url','be_url_shortcode' );
 
-add_shortcode( 'wpurl','be_wpurl_shortcode' );
 /**
  * WP URL Shortcode
  * @since 1.0.0
@@ -41,8 +40,8 @@ add_shortcode( 'wpurl','be_wpurl_shortcode' );
 function be_wpurl_shortcode( $atts ) {
 	return get_bloginfo( 'wpurl' );
 }
+add_shortcode( 'wpurl','be_wpurl_shortcode' );
 
-add_shortcode( 'child', 'be_child_shortcode' );
 /**
  * Child Shortcode
  * @since 1.0.0
@@ -53,3 +52,4 @@ add_shortcode( 'child', 'be_child_shortcode' );
 function be_child_shortcode( $atts ) {
 	return get_bloginfo( 'stylesheet_directory' );
 }
+add_shortcode( 'child', 'be_child_shortcode' );
