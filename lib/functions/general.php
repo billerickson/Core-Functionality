@@ -103,7 +103,7 @@ function be_custom_menu_order( $menu_ord ) {
  * @param int $attachment_id
  * @return int
  *
- * 1. In WordPress, go to Media > Add New and upload an image (150x150)
+ * 1. In WordPress, go to Media > Add New and upload an image (at least 200x200)
  * 2. Once uploaded, click Media > Library and select the image
  * 3. In the URL, grab attachment_id=XX
  */
