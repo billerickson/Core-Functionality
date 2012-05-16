@@ -209,7 +209,7 @@ class Mfields_Open_Graph_Meta_Tags {
 			$post_thumbnail_id = get_post_thumbnail_id();
 		}
 		if ( ! empty( $post_thumbnail_id ) ) {
-			$post_thumbnail = wp_get_attachment_image_src( $post_thumbnail_id, 'thumbnail' );
+			$post_thumbnail = wp_get_attachment_image_src( $post_thumbnail_id, 'medium' );
 			if ( isset( $post_thumbnail[0] ) ) {
 				$output['image'] = $post_thumbnail[0];
 			}
