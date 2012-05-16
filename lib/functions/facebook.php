@@ -71,6 +71,22 @@ class Mfields_Open_Graph_Meta_Tags {
 
 		$output['description'] = wp_strip_all_tags( $output['description'] );
 
+		/*
+		 * If on a single post/page and there's a featured image, use
+		 * it. Can also specify a default to be used everywhere else
+		 * using the filter 'mfields_open_graph_meta_tags_default_image_id'.
+		 */
+		$post_thumbnail_id = absint( apply_filters( 'mfields_open_graph_meta_tags_default_image_id', 0 ) );
+		if ( is_singular() && has_post_thumbnail() ) {
+			$post_thumbnail_id = get_post_thumbnail_id();
+		}
+		if ( ! empty( $post_thumbnail_id ) ) {
+			$post_thumbnail = wp_get_attachment_image_src( $post_thumbnail_id, 'medium' );
+			if ( isset( $post_thumbnail[0] ) ) {
+				$output['image'] = $post_thumbnail[0];
+			}
+		}
+
 		$output = apply_filters( 'mfields_open_graph_meta_tags', $output );
 
 		return $output;
@@ -193,25 +209,6 @@ class Mfields_Open_Graph_Meta_Tags {
 			$excerpt = apply_filters( 'the_excerpt', get_the_excerpt() );
 			if ( ! empty( $excerpt ) ) {
 				$output['description'] = $excerpt;
-			}
-		}
-
-		/*
-		 * Use the featured image only if this post_type supports it
-		 * and the user has assigned one for the queried post. Other
-		 * extension may provide a default image ID for use in cases
-		 * where no feature image has been associated with a post.
-		 * The filter you want to use is:
-		 * "mfields_open_graph_meta_tags_default_image_id"
-		 */
-		$post_thumbnail_id = absint( apply_filters( 'mfields_open_graph_meta_tags_default_image_id', 0 ) );
-		if ( has_post_thumbnail() ) {
-			$post_thumbnail_id = get_post_thumbnail_id();
-		}
-		if ( ! empty( $post_thumbnail_id ) ) {
-			$post_thumbnail = wp_get_attachment_image_src( $post_thumbnail_id, 'medium' );
-			if ( isset( $post_thumbnail[0] ) ) {
-				$output['image'] = $post_thumbnail[0];
 			}
 		}
 
