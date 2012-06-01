@@ -98,17 +98,17 @@ function be_custom_menu_order( $menu_ord ) {
  * @since 1.0.0
  *
  * See /lib/functions/facebook.php
+ * Should be at least 200x200
  * @link https://developers.facebook.com/tools/debug
  *
- * @param int $attachment_id
- * @return int
+ * @param array $meta
+ * @return array 
  *
- * 1. In WordPress, go to Media > Add New and upload an image (at least 200x200)
- * 2. Once uploaded, click Media > Library and select the image
- * 3. In the URL, grab attachment_id=XX
  */
-function be_default_facebook_image( $attachment_id ) {
-	$attachment_id = 50;
-	return $attachment_id;
+function be_default_facebook_image( $meta ) {
+	if( isset( $meta['image'] ) && empty( $meta['image'] ) )
+		$meta['image'] = get_stylesheet_directory_uri() . '/images/facebook.jpg';
+	
+	return $meta;
 }
-//add_filter( 'mfields_open_graph_meta_tags_default_image_id', 'be_default_facebook_image' );
+//add_filter( 'mfields_open_graph_meta_tags', 'be_default_facebook_image' );
