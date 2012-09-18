@@ -21,6 +21,22 @@ class BE_Social_Widget extends WP_Widget {
 		$this->WP_Widget( 'social-widget', 'Social Widget', $widget_ops );
 	}
 
+	/**
+	 * Social Options 
+	 *
+	 */
+	function social_options() {
+		return array(
+			'facebook'  => 'Facebook',
+			'linkedin'  => 'LinkedIn',
+			'twitter'   => 'Twitter',
+			'sharethis' => 'ShareThis',
+			'skype'     => 'Skype',
+			'yammer'    => 'Yammer',
+			'rss'       => 'RSS Feed',
+		);
+	}
+
     /**
      * Outputs the HTML for this widget.
      *
@@ -31,9 +47,18 @@ class BE_Social_Widget extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract( $args, EXTR_SKIP );
 		echo $before_widget;
-		echo '<a href="'. $instance['be_facebook'] .'" class="btn-fb"><span class="hidden">Facebook</span></a>';
-		echo '<a href="'. $instance['be_twitter'] .'" class="btn-tw"><span class="hidden">Twitter</span></a>';
-		echo '<a href="'. $instance['be_youtube'] .'" class="btn-yt"><span class="hidden">Youtube</span></a>';
+		
+		if( $instance['title'] )
+			echo $before_title . esc_attr( $instance['title'] ) . $after_title;
+			
+		echo '<p class="socials">';
+		$socials = $this->social_options();
+		foreach( $socials as $key => $label ) {
+			if( !empty( $instance[$key] ) )
+				echo '<a class="social-icon ' . $key . '">' . $label . '</a> ';
+		}
+		echo '</p>';
+
 		echo $after_widget;
 	}
 
@@ -47,13 +72,15 @@ class BE_Social_Widget extends WP_Widget {
      **/
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
-	
-		$instance['be_facebook'] = esc_url( $new_instance['be_facebook'] );
-		$instance['be_twitter'] = esc_url( $new_instance['be_twitter'] );
-		$instance['be_youtube'] = esc_url( $new_instance['be_youtube'] );			
+		
+		$instance['title'] = esc_attr( $new_instance['title'] );
+		$socials = $this->social_options();
+		foreach( $socials as $key => $label )
+			$instance[$key] = esc_url( $new_instance[$key] );
+
 		return $instance;
 	}
-
+	
     /**
      * Displays the form for this widget on the Widgets page of the WP Admin area.
      *
@@ -62,17 +89,17 @@ class BE_Social_Widget extends WP_Widget {
      **/
 	function form( $instance ) {
 	
-		$defaults = array( 'be_facebook' => '', 'be_twitter' => '', 'be_youtube' => '' );
-		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
-
-		<p><label for="<?php echo $this->get_field_id( 'be_facebook' ); ?>">Facebook URL: <input class="widefat" id="<?php echo $this->get_field_id( 'be_facebook' ); ?>" name="<?php echo $this->get_field_name( 'be_facebook' ); ?>" value="<?php echo $instance['be_facebook']; ?>" /></label></p>
-
-		<p><label for="<?php echo $this->get_field_id( 'be_twitter' ); ?>">Twitter URL: <input class="widefat" id="<?php echo $this->get_field_id( 'be_twitter' ); ?>" name="<?php echo $this->get_field_name( 'be_twitter' ); ?>" value="<?php echo $instance['be_twitter']; ?>" /></label></p>
-
-		<p><label for="<?php echo $this->get_field_id( 'be_youtube' ); ?>">Youtube URL: <input class="widefat" id="<?php echo $this->get_field_id( 'be_youtube' ); ?>" name="<?php echo $this->get_field_name( 'be_youtube' ); ?>" value="<?php echo $instance['be_youtube']; ?>" /></label></p>
-
-		<?php
-
+		$socials = $this->social_options();
+		$defaults = array( 'title' => '' );
+		foreach( $socials as $key => $label )
+			$defaults[$key] = '';
+		$instance = wp_parse_args( (array) $instance, $defaults ); 
+		
+		echo '<p><label for="' . $this->get_field_id( 'title' ) . '">Title: <input class="widefat" id="' . $this->get_field_id( 'title' ) .'" name="' . $this->get_field_name( 'title' ) . '" value="' . esc_attr( $instance['title'] ) . '" /></label></p>';
+		
+		foreach( $socials as $key => $label )
+			echo '<p><label for="' . $this->get_field_id( $key ) . '">' . $label . ' URL: <input class="widefat" id="' . $this->get_field_id( $key ) .'" name="' . $this->get_field_name( $key ) . '" value="' . esc_url( $instance[$key] ) . '" /></label></p>';
+		
 	}
 }
 
