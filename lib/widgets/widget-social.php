@@ -55,7 +55,7 @@ class BE_Social_Widget extends WP_Widget {
 		$socials = $this->social_options();
 		foreach( $socials as $key => $label ) {
 			if( !empty( $instance[$key] ) )
-				echo '<a class="social-icon ' . $key . '">' . $label . '</a> ';
+				echo '<a class="social-icon ' . $key . '" href="' . esc_url( $instance[$key] ) . '">' . $label . '</a> ';
 		}
 		echo '</p>';
 
