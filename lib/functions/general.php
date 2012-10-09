@@ -110,7 +110,7 @@ function be_custom_menu_order( $menu_ord ) {
  */
 function be_default_facebook_image( $meta ) {
 	if( isset( $meta['image'] ) && empty( $meta['image'] ) )
-		$meta['image'] = get_stylesheet_directory_uri() . '/images/facebook.jpg';
+		$meta['image'] = get_stylesheet_directory_uri() . '/screenshot.jpg';
 	
 	return $meta;
 }
