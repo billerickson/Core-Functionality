@@ -167,3 +167,14 @@ function be_pp( $obj, $label = '' ) {
     </script>
     <?php
 }
+
+/**
+ * Disable WPSEO Nag on Dev Server 
+ *
+ */
+function be_disable_wpseo_nag( $options ) {
+	if( strpos( site_url(), 'localhost' ) || strpos( site_url() ,'master-wp' ) )
+		$options['ignore_blog_public_warning'] = 'ignore';
+	return $options;
+}
+add_filter( 'option_wpseo', 'be_disable_wpseo_nag' );
