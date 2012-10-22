@@ -178,3 +178,6 @@ function be_disable_wpseo_nag( $options ) {
 	return $options;
 }
 add_filter( 'option_wpseo', 'be_disable_wpseo_nag' );
+
+// Disable WPSEO columns on edit screen 
+add_filter( 'wpseo_use_page_analysis', '__return_false' );
