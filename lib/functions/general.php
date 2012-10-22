@@ -95,27 +95,6 @@ function be_custom_menu_order( $menu_ord ) {
 //add_filter( 'custom_menu_order', 'be_custom_menu_order' );
 //add_filter( 'menu_order', 'be_custom_menu_order' );
 
-
-/**
- * Default Facebook Image 
- * @since 1.0.0
- *
- * See /lib/functions/facebook.php
- * Should be at least 200x200
- * @link https://developers.facebook.com/tools/debug
- *
- * @param array $meta
- * @return array 
- *
- */
-function be_default_facebook_image( $meta ) {
-	if( isset( $meta['image'] ) && empty( $meta['image'] ) )
-		$meta['image'] = get_stylesheet_directory_uri() . '/screenshot.jpg';
-	
-	return $meta;
-}
-//add_filter( 'mfields_open_graph_meta_tags', 'be_default_facebook_image' );
-
 /**
  * Pretty Printing
  * 
