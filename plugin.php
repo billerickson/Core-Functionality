@@ -31,5 +31,8 @@ define( 'BE_DIR', dirname( __FILE__ ) );
 // Widgets
 //include_once( BE_DIR . '/lib/widgets/widget-social.php' );
 
+// Editor Style Refresh
+include_once( BE_DIR . '/lib/functions/editor-style-refresh.php' );
+
 // General
 include_once( BE_DIR . '/lib/functions/general.php' );
