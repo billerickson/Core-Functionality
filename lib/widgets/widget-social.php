@@ -16,10 +16,10 @@ class BE_Social_Widget extends WP_Widget {
      *
      * @return void
      **/
-	function BE_Social_Widget() {
-		$widget_ops = array( 'classname' => 'widget_socials', 'description' => 'Social icon widget' );
-		$this->WP_Widget( 'social-widget', 'Social Widget', $widget_ops );
-	}
+	function __construct() {
+        	$widget_ops = array( 'classname' => 'widget_socials', 'description' => 'Social icon widget' );
+        	parent::__construct( 'social-widget', 'Social Widget', $widget_ops );
+    	}
 
 	/**
 	 * Social Options 
