@@ -12,30 +12,25 @@
  * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
  
-/**
- * Don't Update Plugin
- * @since 1.0.0
- * 
- * This prevents you being prompted to update if there's a public plugin
- * with the same name.
+ /**
+ * Dont Update the Plugin
+ * If there is a plugin in the repo with the same name, this prevents WP from prompting an update.
  *
- * @author Mark Jaquith
- * @link http://markjaquith.wordpress.com/2009/12/14/excluding-your-plugin-or-theme-from-update-checks/
- *
- * @param array $r, request arguments
- * @param string $url, request url
- * @return array request arguments
+ * @since  1.0.0
+ * @author Jon Brown
+ * @param  array $r Existing request arguments
+ * @param  string $url Request URL
+ * @return array Amended request arguments
  */
-function be_core_functionality_hidden( $r, $url ) {
-	if ( 0 !== strpos( $url, 'http://api.wordpress.org/plugins/update-check' ) )
-		return $r; // Not a plugin update request. Bail immediately.
-	$plugins = unserialize( $r['body']['plugins'] );
-	unset( $plugins->plugins[ plugin_basename( __FILE__ ) ] );
-	unset( $plugins->active[ array_search( plugin_basename( __FILE__ ), $plugins->active ) ] );
-	$r['body']['plugins'] = serialize( $plugins );
-	return $r;
-}
-add_filter( 'http_request_args', 'be_core_functionality_hidden', 5, 2 );
+function be_dont_update_core_func_plugin( $r, $url ) {
+  if ( 0 !== strpos( $url, 'https://api.wordpress.org/plugins/update-check/1.1/' ) )
+    return $r; // Not a plugin update request. Bail immediately.
+    $plugins = json_decode( $r['body']['plugins'], true );
+    unset( $plugins['plugins'][plugin_basename( __FILE__ )] );
+    $r['body']['plugins'] = json_encode( $plugins );
+    return $r;
+ }
+add_filter( 'http_request_args', 'be_dont_update_core_func_plugin', 5, 2 );
 
 // Use shortcodes in widgets
 add_filter( 'widget_text', 'do_shortcode' );
