@@ -35,7 +35,6 @@ add_filter( 'http_request_args', 'be_dont_update_core_func_plugin', 5, 2 );
 // Use shortcodes in widgets
 add_filter( 'widget_text', 'do_shortcode' );
 
-
 /**
  * Pretty Printing
  * 
