@@ -58,39 +58,6 @@ function be_remove_menus () {
 add_action( 'admin_menu', 'be_remove_menus' );
 
 /**
- * Customize Admin Bar Items
- * @since 1.0.0
- * @link http://wp-snippets.com/addremove-wp-admin-bar-links/
- */
-function be_admin_bar_items() {
-	global $wp_admin_bar;
-	$wp_admin_bar->remove_menu( 'new-link', 'new-content' );
-}
-add_action( 'wp_before_admin_bar_render', 'be_admin_bar_items' );
-
-
-/**
- * Customize Menu Order
- * @since 1.0.0
- *
- * @param array $menu_ord. Current order.
- * @return array $menu_ord. New order.
- *
- */
-function be_custom_menu_order( $menu_ord ) {
-	if ( !$menu_ord ) return true;
-	return array(
-		'index.php', // this represents the dashboard link
-		'edit.php?post_type=page', //the page tab
-		'edit.php', //the posts tab
-		'edit-comments.php', // the comments tab
-		'upload.php', // the media manager
-    );
-}
-//add_filter( 'custom_menu_order', 'be_custom_menu_order' );
-//add_filter( 'menu_order', 'be_custom_menu_order' );
-
-/**
  * Pretty Printing
  * 
  * @author Chris Bratlien
