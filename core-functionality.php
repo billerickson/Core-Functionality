@@ -20,6 +20,5 @@
 define( 'BE_DIR', dirname( __FILE__ ) );
 
 require_once( BE_DIR . '/inc/general.php'              ); // General
-require_once( BE_DIR . '/inc/editor-style-refresh.php' ); // Editor Style Refresh
 require_once( BE_DIR . '/inc/cpt-testimonial.php'      ); // Testimonial CPT
 //require_once( BE_DIR . '/inc/widget-sample.php'      ); // Sample Widget
