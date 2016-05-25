@@ -3,7 +3,7 @@
  * Plugin Name: Core Functionality
  * Plugin URI: https://github.com/billerickson/Core-Functionality
  * Description: This contains all your site's core functionality so that it is theme independent.
- * Version: 1.1.0
+ * Version: 2.0
  * Author: Bill Erickson
  * Author URI: http://www.billerickson.net
  *
@@ -25,9 +25,6 @@ define( 'BE_DIR', dirname( __FILE__ ) );
 // Taxonomies 
 //include_once( BE_DIR . '/lib/functions/taxonomies.php' );
 
-// Metaboxes
-//include_once( BE_DIR . '/lib/functions/metaboxes.php' );
- 
 // Widgets
 //include_once( BE_DIR . '/lib/widgets/widget-social.php' );
 
