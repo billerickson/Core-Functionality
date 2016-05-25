@@ -18,18 +18,8 @@
 
 // Plugin Directory 
 define( 'BE_DIR', dirname( __FILE__ ) );
- 
-// Post Types
-//include_once( BE_DIR . '/lib/functions/post-types.php' );
 
-// Taxonomies 
-//include_once( BE_DIR . '/lib/functions/taxonomies.php' );
-
-// Widgets
-//include_once( BE_DIR . '/lib/widgets/widget-social.php' );
-
-// Editor Style Refresh
-include_once( BE_DIR . '/lib/functions/editor-style-refresh.php' );
-
-// General
-include_once( BE_DIR . '/lib/functions/general.php' );
+require_once( BE_DIR . '/inc/general.php'              ); // General
+require_once( BE_DIR . '/inc/editor-style-refresh.php' ); // Editor Style Refresh
+require_once( BE_DIR . '/inc/cpt-testimonial.php'      ); // Testimonial CPT
+//require_once( BE_DIR . '/inc/widget-sample.php'      ); // Sample Widget
