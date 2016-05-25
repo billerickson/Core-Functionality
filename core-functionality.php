@@ -3,7 +3,7 @@
  * Plugin Name: Core Functionality
  * Plugin URI: https://github.com/billerickson/Core-Functionality
  * Description: This contains all your site's core functionality so that it is theme independent.
- * Version: 2.0
+ * Version: 2.0.0
  * Author: Bill Erickson
  * Author URI: http://www.billerickson.net
  *
