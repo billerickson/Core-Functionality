@@ -104,3 +104,24 @@ function ea_remove_wpseo_notifications() {
 	remove_action( 'all_admin_notices', array( Yoast_Notification_Center::get(), 'display_notifications' ) );
 }
 add_action( 'init', 'ea_remove_wpseo_notifications' );
+
+/**
+ * Gravity Forms Domain
+ *
+ * Adds a notice at the end of admin email notifications 
+ * specifying the domain from which the email was sent.
+ *
+ * @param array $notification
+ * @param object $form
+ * @param object $entry
+ * @return array $notification
+ */
+function ea_gravityforms_domain( $notification, $form, $entry ) {
+
+	if( $notification['name'] == 'Admin Notification' ) {
+		$notification['message'] .= 'Sent from ' . home_url();
+	}
+
+	return $notification;
+}
+add_filter( 'gform_notification', 'ea_gravityforms_domain', 10, 3 );
