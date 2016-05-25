@@ -1,15 +1,11 @@
 <?php
 /**
- * Post Types
- *
- * This file registers any custom post types
- *
- * @package      Core_Functionality
- * @since        1.0.0
- * @link         https://github.com/billerickson/Core-Functionality
- * @author       Bill Erickson <bill@billerickson.net>
- * @copyright    Copyright (c) 2011, Bill Erickson
- * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
+ * Core Functionality Plugin
+ * 
+ * @package    CoreFunctionality
+ * @since      2.0.0
+ * @copyright  Copyright (c) 2016, Bill Erickson
+ * @license    GPL-2.0+
  */
 
 /**

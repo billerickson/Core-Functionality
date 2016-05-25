@@ -1,4 +1,4 @@
-<?php # -*- coding: utf-8 -*-
+<?php
 /**
  * Plugin Name: T5 Fresh Editor Stylesheets
  * Description: Enforces fresh editor stylesheets per version parameter.
